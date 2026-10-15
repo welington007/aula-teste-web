@@ -1,0 +1,11 @@
+node_modules/
+
+# Cypress artifacts
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Local environment files
+.env
+.env.*
+!.env.example
