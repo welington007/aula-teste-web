@@ -2,12 +2,19 @@
 
 import { faker } from '@faker-js/faker'
 
+const defaultBaseUrl = 'https://www.automationexercise.com'
+
 describe('Automation Exercise', { retries: 1 }, () => {
   // Cadastro
   // cy.get() -> elementos baseados em css selector
   // cy.contains() -> elementos baseados em texto
 
   const password = '12345'
+
+  const visitApplication = (path = '/') => {
+    const baseUrl = Cypress.config('baseUrl') || defaultBaseUrl
+    cy.visit(new URL(path, `${baseUrl}/`).toString())
+  }
 
   const createUserData = () => {
     const firstName = faker.person.firstName()
@@ -28,7 +35,7 @@ describe('Automation Exercise', { retries: 1 }, () => {
   }
 
   const openLoginPage = () => {
-    cy.visit('/')
+    visitApplication()
     cy.get('a[href*="login"]').click()
   }
 

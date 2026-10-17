@@ -1,6 +1,12 @@
 import { faker } from '@faker-js/faker'
 
 const password = '12345'
+const defaultBaseUrl = 'https://www.automationexercise.com'
+
+const visitApplication = (path = '/') => {
+  const baseUrl = Cypress.config('baseUrl') || defaultBaseUrl
+  cy.visit(new URL(path, `${baseUrl}/`).toString())
+}
 
 const createUserData = () => {
   const firstName = faker.person.firstName()
@@ -21,7 +27,7 @@ const createUserData = () => {
 }
 
 const openHomePage = () => {
-  cy.visit('/')
+  visitApplication()
 }
 
 const openLoginPage = () => {
@@ -57,7 +63,7 @@ const registerUser = (user) => {
 }
 
 const loginUser = (email, userName = 'PGATS Aut', userPassword = password) => {
-  cy.visit('/login')
+  visitApplication('/login')
   cy.get('[data-qa="login-email"]').type(email)
   cy.get('[data-qa="login-password"]').type(userPassword)
   cy.get('[data-qa="login-button"]').click()
