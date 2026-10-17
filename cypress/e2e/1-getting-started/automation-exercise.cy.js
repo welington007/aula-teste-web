@@ -128,7 +128,7 @@ describe('Automation Exercise', { retries: 1 }, () => {
 
   it('Cadastrar um novo usuário com sucesso', () => {
     //cy.visit('https://www.automationexercise.com')
-    cy.visit('/')
+    visitApplication()
     cy.get('a[href*=login]').click()
 
     // const timestamp = new Date().getTime()
@@ -187,7 +187,7 @@ describe('Automation Exercise', { retries: 1 }, () => {
     // acesso a página de login
     // Problema 1: Repetição do cy.visit
     //cy.visit('https://www.automationexercise.com/login')
-    cy.visit('/login')
+    visitApplication('/login')
     // ACT
     cy.get('[data-qa="login-email"]').type('pgats-aut-test-1791030872114@mail.com')
     cy.get('[data-qa="login-password"]').type('12345')
@@ -212,7 +212,7 @@ describe('Automation Exercise', { retries: 1 }, () => {
 
   it('Efetuar Login de Usuário email e senha INCORRETOS', () => {
     //cy.visit('https://www.automationexercise.com/login')
-    cy.visit('/login')
+    visitApplication('/login')
     // ACT
     cy.get('[data-qa="login-email"]').type('pgats-aut-test-1791030872114@mail.com')
     cy.get('[data-qa="login-password"]').type('54321')
@@ -229,7 +229,7 @@ describe('Automation Exercise', { retries: 1 }, () => {
 
   it('Efetuar Logout', () => {
     //cy.visit('https://www.automationexercise.com/login')
-    cy.visit('/login')
+    visitApplication('/login')
     // ACT
     cy.get('[data-qa="login-email"]').type('pgats-aut-test-1791030872114@mail.com')
     cy.get('[data-qa="login-password"]').type('12345')
@@ -251,7 +251,7 @@ describe('Automation Exercise', { retries: 1 }, () => {
 
   it('Tentar cadastrar usuário com e-mail já cadastrado', () => {
     //cy.visit('https://www.automationexercise.com')
-    cy.visit('/')
+    visitApplication()
     cy.get('a[href*=login]').click()
 
     // const timestamp = new Date().getTime()
@@ -273,7 +273,7 @@ describe('Automation Exercise', { retries: 1 }, () => {
 
   it('Caso de Teste 08: Verificar todos os produtos e a página de detalhes do produto', () => {
         //cy.visit('https://www.automationexercise.com')
-        cy.visit('/')
+    visitApplication()
         cy.contains('Full-Fledged practice website for Automation Engineers').should('be.visible')
         cy.get('a[href*="products"]').first().click()
 
@@ -292,7 +292,7 @@ describe('Automation Exercise', { retries: 1 }, () => {
 
     it('Caso de Teste 09: Pesquisar produtos', () => {
         //cy.visit('https://www.automationexercise.com')
-        cy.visit('/')
+      visitApplication()
         cy.contains('Full-Fledged practice website for Automation Engineers').should('be.visible')
         cy.get('a[href*="products"]').first().click()
         cy.contains('All Products').should('be.visible')
@@ -311,7 +311,7 @@ describe('Automation Exercise', { retries: 1 }, () => {
     })
 
     it('Caso de Teste 10: Verificar a inscrição na página inicial', () => {
-        cy.visit('/')
+      visitApplication()
         //cy.visit('https://www.automationexercise.com')
         cy.contains('Full-Fledged practice website for Automation Engineers').should('be.visible')
         cy.get('footer').scrollIntoView()
