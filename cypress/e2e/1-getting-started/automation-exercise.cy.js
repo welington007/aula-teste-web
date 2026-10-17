@@ -28,7 +28,7 @@ describe('Automation Exercise', { retries: 1 }, () => {
   }
 
   const openLoginPage = () => {
-    cy.visit('https://www.automationexercise.com')
+    cy.visit('/')
     cy.get('a[href*="login"]').click()
   }
 
